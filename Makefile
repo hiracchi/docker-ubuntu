@@ -1,4 +1,4 @@
-PACKAGE=hiracchi/ubuntu
+PACKAGE=ghcr.io/hiracchi/ubuntu
 TAG=latest
 CONTAINER_NAME=ubuntu
 ARG=

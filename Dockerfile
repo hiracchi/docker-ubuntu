@@ -1,13 +1,5 @@
 FROM ubuntu:20.04
 
-ARG BUILD_DATE
-ARG VCS_REF
-ARG VERSION
-LABEL org.label-schema.build-date=$BUILD_DATE \
-  org.label-schema.vcs-ref=$VCS_REF \
-  org.label-schema.vcs-url="https://github.com/hiracchi/docker-ubuntu-ja" \
-  org.label-schema.version=$VERSION
-
 ARG GROUP_NAME=docker
 ARG USER_NAME=docker
 ARG USER_ID=1000
@@ -81,6 +73,7 @@ RUN set -x && \
 
 USER ${USER_NAME}:${GROUP_NAME}
 WORKDIR /home/${USER_NAME}
-# ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-ENTRYPOINT ["fixuid"]
-CMD ["/usr/bin/tail", "-f", "/dev/null"]
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+# ENTRYPOINT ["fixuid"]
+# CMD ["/usr/bin/tail", "-f", "/dev/null"]
