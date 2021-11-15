@@ -31,7 +31,7 @@ start_as_root:
 		--name ${CONTAINER_NAME} \
 		"${PACKAGE}:${TAG}" ${ARG}
 
-start_bash:
+debug:
 	@\$(eval USER_ID := $(shell id -u))
 	@\$(eval GROUP_ID := $(shell id -g))
 	@echo "start docker as ${USER_ID}:${GROUP_ID}"
