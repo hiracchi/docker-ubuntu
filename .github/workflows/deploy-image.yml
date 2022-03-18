@@ -24,4 +24,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:${{ runner.arch }}-latest
+            ghcr.io/${{ github.repository }}:latest
