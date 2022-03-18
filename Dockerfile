@@ -17,10 +17,8 @@ ARG APT_SERVER="archive.ubuntu.com"
 # ARG APT_SERVER="ftp.riken.jp/Linux"
 # ARG APT_SERVER="ftp.jaist.ac.jp/pub/Linux/"
 
-ENV DEBIAN_FRONTEND="noninteractive"
 ENV TZ="Asia/Tokyo"
-# ENV LANG="ja_JP.UTF-8" LANGUAGE="ja_JP:en" LC_ALL="ja_JP.UTF-8"
-ENV LANG=C LC_CTYPE=en_US.UTF-8 
+ENV LC_ALL=C.UTF-8 LANG=C.UTF-8 DEBIAN_FRONTEND=noninteractive
 
 RUN set -x && \
   sed -i -e "s|archive.ubuntu.com|${APT_SERVER}|g" /etc/apt/sources.list && \
@@ -75,5 +73,4 @@ USER ${USER_NAME}:${GROUP_NAME}
 WORKDIR /home/${USER_NAME}
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-# ENTRYPOINT ["fixuid"]
 # CMD ["/usr/bin/tail", "-f", "/dev/null"]

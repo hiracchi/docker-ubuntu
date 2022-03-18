@@ -11,6 +11,15 @@ build:
 		-f Dockerfile \
 		-t "${PACKAGE}:${TAG}" . 2>&1 | tee docker-build.log
 
+build-amd64:
+	docker build --platform linux/amd64 \
+		-f Dockerfile \
+		-t "${PACKAGE}:${TAG}" . 2>&1 | tee docker-build.log
+
+build-arm64:
+	docker build --platform linux/arm64 \
+		-f Dockerfile \
+		-t "${PACKAGE}:${TAG}" . 2>&1 | tee docker-build.log
 
 start:
 	@\$(eval USER_ID := $(shell id -u))
