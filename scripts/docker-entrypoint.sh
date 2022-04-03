@@ -1,13 +1,13 @@
 #!/bin/bash
 
-set -e
+# set -e
 # umask 0000
 
 USER_ID=$(id -u)
 GROUP_ID=$(id -g)
 
 if type fixuid; then
-    eval $(fixuid)
+    eval $(fixuid -q)
 
     if [ -z "$*" ]; then
         tail -f /dev/null
