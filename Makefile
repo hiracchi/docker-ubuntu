@@ -1,8 +1,8 @@
 PACKAGE=ghcr.io/hiracchi/docker-ubuntu
-TAG=latest
+TAG=22.04
 CONTAINER_NAME=ubuntu
 ARG=
-PLATFORM = --platform linux/amd64
+# PLATFORM = --platform linux/amd64
 
 
 .PHONY: build start stop restart term logs
