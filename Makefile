@@ -1,4 +1,4 @@
-PACKAGE=ghcr.io/hiracchi/docker-ubuntu
+PACKAGE=ubuntu
 TAG=22.04
 CONTAINER_NAME=ubuntu
 ARG=
@@ -14,11 +14,13 @@ build:
 
 build-amd64:
 	docker build --platform linux/amd64 \
+		--build-arg FIXUID_ARCH=amd64 \
 		-f Dockerfile \
 		-t "${PACKAGE}:${TAG}" . 2>&1 | tee docker-build.log
 
 build-arm64:
 	docker build --platform linux/arm64 \
+		--build-arg FIXUID_ARCH=arm64 \
 		-f Dockerfile \
 		-t "${PACKAGE}:${TAG}" . 2>&1 | tee docker-build.log
 

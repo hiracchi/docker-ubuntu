@@ -7,6 +7,8 @@ ARG GROUP_ID=1000
 ENV GROUP_NAME=${GROUP_NAME}
 ENV USER_NAME=${USER_NAME}
 
+ARG FIXUID_ARCH=amd64
+ARG FIXUID_VER=0.6.0
 
 # -----------------------------------------------------------------------------
 # base settings
@@ -66,7 +68,7 @@ RUN set -x && \
   echo "%${USER_NAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/${USER_NAME} && \
   chmod 0400 /etc/sudoers.d/${USER_NAME} && \
   \
-  curl -SsL https://github.com/boxboat/fixuid/releases/download/v0.5.1/fixuid-0.5.1-linux-amd64.tar.gz | tar -C /usr/local/bin -xzf - && \
+  curl -SsL https://github.com/boxboat/fixuid/releases/download/v${FIXUID_VER}/fixuid-${FIXUID_VER}-linux-${FIXUID_ARCH}.tar.gz | tar -C /usr/local/bin -xzf - && \
   chown root:root /usr/local/bin/fixuid && \
   chmod 4755 /usr/local/bin/fixuid && \
   mkdir -p /etc/fixuid && \
@@ -85,3 +87,4 @@ WORKDIR /home/${USER_NAME}
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 # CMD ["/usr/bin/tail", "-f", "/dev/null"]
+
